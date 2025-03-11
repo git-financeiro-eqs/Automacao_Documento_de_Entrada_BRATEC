@@ -141,7 +141,7 @@ def cancelar3():
     checar_failsafe()
 
 
-def erro_no_portal():
+def reposicionar_robo():
     sleep(0.3)
     ptg.hotkey("alt", "tab", interval=0.1)
     ptg.hotkey("ctrl", "w")

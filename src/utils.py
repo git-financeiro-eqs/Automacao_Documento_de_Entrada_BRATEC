@@ -251,7 +251,7 @@ def enviar_email(corpo):
  
     try:
         with smtplib.SMTP_SSL('mail.eqseng.com.br', 465) as servidor:
-            servidor.login("bot.contabil@eqseng.com.br", "EQSeng852@")
+            servidor.login("bot.contabil@eqseng.com.br", "*********")
             servidor.send_message(mensagem)
     except Exception as e:
         pass

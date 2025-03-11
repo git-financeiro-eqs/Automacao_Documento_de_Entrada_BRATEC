@@ -26,6 +26,8 @@ mensagem_xi = "Processo com um XML que não consigo ler."
 def robozinho(resetar=False):
     """
     Função principal. Nela está o fluxo da tarefa que esse programa realiza.
+    É uma função recursiva devido a necessidade de reinicialização do processo
+    que alguma circunstância indesejada pode provocar.
     """
 
     try:
@@ -128,6 +130,10 @@ def robozinho(resetar=False):
                 driver.quit()
                 sleep(0.2)
                 utils.checar_failsafe()
+
+                # Circunstância indesejada:
+                # Instabilidade no portal compras.
+                
                 return robozinho()  
             
         sleep(0.2)
@@ -202,6 +208,10 @@ def robozinho(resetar=False):
                 except xmltodict.expat.ExpatError as e:
                     if aux == True:
                         utils.tratar_xml_ilegivel(XML_ilegivel, nao_lancadas, link, mensagem_xi, aux)
+                        
+                        # Circunstância indesejada:
+                        # XML ilegível
+                        
                         return robozinho()
                     else:
                         utils.tratar_xml_ilegivel(XML_ilegivel, nao_lancadas, link, mensagem_xi)
@@ -313,6 +323,10 @@ def robozinho(resetar=False):
                             clicar_cancelar = utils.encontrar_centro_imagem(r'Imagens\BotaoCancelarDadosNF.png')  
                     utils.cancelar1()
                     utils.acrescer_lista(processo_errado, nao_lancadas, link, mensagem_pe)
+
+                    # Circunstância indesejada:
+                    # Filial do pedido não corresponde a filial de XML
+                    
                     return robozinho()
                 except TypeError:
                     utils.clicar_dados_da_nota()
@@ -365,6 +379,10 @@ def robozinho(resetar=False):
                 utils.checar_failsafe()
                 ptg.press("enter")
                 utils.cancelar1()
+
+                # Circunstância indesejada:
+                # Erro na abertura do processo para lançamento.
+                
                 return robozinho()
             
             tela_de_lancamento = utils.encontrar_imagem(r'Imagens\ReferenciaAbriuOProcesso.png')
@@ -412,6 +430,10 @@ def robozinho(resetar=False):
             if verificador == True:
                 utils.acrescer_lista(processo_errado, nao_lancadas, link, mensagem_pe)
                 utils.checar_failsafe()
+                
+                # Circunstância indesejada:
+                # Valor total do item não confere nem é passível de correção
+                
                 return robozinho()
             tratamento_item = tratamentoItem.TratadorItem(item_fracionado, itens, i, ctrl_imposto)
             item = tratamento_item.tratar_item()
@@ -426,6 +448,10 @@ def robozinho(resetar=False):
                         tes = operadoresLancamento.definir_TES(codigo, ctrl_imposto)
                         if tes == True:
                             utils.acrescer_lista(processo_errado, nao_lancadas, link, mensagem_pe)
+
+                            # Circunstância indesejada:
+                            # Natureza não mapeada pela automação
+                            
                             return robozinho()
                         operadoresLancamento.escrever_TES(tes, natureza)
                         operadoresLancamento.inserir_desconto(desc_no_item)
@@ -736,6 +762,11 @@ def robozinho(resetar=False):
                 utils.cancelar2()
                 utils.acrescer_lista(processo_errado, nao_lancadas, link, mensagem_pe)
                 utils.checar_failsafe()
+
+                # Circunstância indesejada:
+                # Não foi possível corrigir o valor dos títulos
+                # com a lógica estabelecida nessa automação
+                
                 return robozinho()
             
         ptg.hotkey("ctrl", "c", interval=0.2)
@@ -814,6 +845,11 @@ def robozinho(resetar=False):
             sleep(0.3)
             utils.clicar_microsiga()
             utils.acrescer_lista(processo_errado, nao_lancadas, link, mensagem_pe)
+
+            # Circunstância indesejada:
+            # Erro de quantidade no estoque da empresa
+            # (Esse erro só pode ser ajustado pelos colaboradores do almoxarifado)
+            
             return robozinho()
 
 
@@ -869,4 +905,6 @@ def robozinho(resetar=False):
     except ptg.FailSafeException:
         abortar = True
         return sem_boleto, processo_bloqueado, processo_errado, XML_ilegivel, nao_lancadas, abortar    
-             
+
+
+   

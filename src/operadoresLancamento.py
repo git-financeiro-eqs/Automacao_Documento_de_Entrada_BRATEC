@@ -195,14 +195,6 @@ def verificar_valor_item(lista, indiceX):
     return cancelar_lancamento, razoes
 
 
-def corrigir_passos_horizontal(cont, item):
-    if len(item) > 1:
-        press(["right"]*4)
-        sleep(1)
-        if cont == len(item):
-            press(["left"]*4)
-
-
 def copiar_natureza():
     """
     Copia a natureza do item no SIGA e a corrige, se necessário.
@@ -471,4 +463,13 @@ def inserir_IPI(ipi_no_item, base_ipi, aliq_ipi, passosIPI=12):
     write(ipi_no_item)
     press(["left"]*14)
     utils.checar_failsafe()
-       
+
+
+def corrigir_passos_horizontal(cont, item):
+    if len(item) > 1:
+        press(["right"]*4)
+        sleep(1)
+        if cont == len(item):
+            press(["left"]*4)
+
+  

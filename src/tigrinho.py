@@ -224,7 +224,7 @@ def robozinho(resetar=False):
         # <DETALHES DO TRECHO>
 
         # O Código abaixo pode parecer um tanto confuso, mas ele é dessa maneira devido as muitas possibilidades de árvores XML
-        # que podemos encontrar no decorrer do processo. O XML nada mais é do que um conjunto de chaves e valores, e chaves que
+        # que podemos encontrar. O XML nada mais é do que um conjunto de chaves e valores, e chaves que
         # comportam mais chaves. Ele pode ter mais de um item, e tendo mais de um item,
         # a abordagem para extrair seus dados é uma (que segue a linha [const_item], que nada mais é do que acessar item por item
         # através de seu indice. Ex: 0, 1, 2...), enquanto quando há apenas um item no XML a abordagem é outra.

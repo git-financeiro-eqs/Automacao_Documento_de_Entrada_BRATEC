@@ -381,7 +381,7 @@ def robozinho(resetar=False):
                 utils.cancelar1()
 
                 # Circunstância indesejada:
-                # Erro na abertura do processo para lançamento.
+                # Erro sistêmico na abertura do processo para lançamento.
                 
                 return robozinho()
             

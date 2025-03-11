@@ -142,6 +142,10 @@ def cancelar3():
 
 
 def reposicionar_robo():
+    """ 
+    Reposicionar o robo para um próximo lançamento
+    em caso de inconsistência encontrada na etapa do portal compras.
+    """
     sleep(0.3)
     ptg.hotkey("alt", "tab", interval=0.1)
     ptg.hotkey("ctrl", "w")

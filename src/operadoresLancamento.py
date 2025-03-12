@@ -107,8 +107,10 @@ def verificar_valor_item(lista, indiceX):
     :param lista: Lista contendo os valores dos itens da NF.
     :param indiceX: Índice do item atual na lista.
 
-    :return: Uma tupla contendo um booleano (se o lançamento deve ser cancelado) e uma lista de razões para correção caso o item
-             seja fracionado. * Veja o módulo tratamentoItem *. Aqui também temos uma regra de negócio sendo aplicada: alguns itens 
+    :return: Uma tupla contendo um booleano (se o lançamento deve ser cancelado) e uma lista de razões (quant. do item na linha / quantidade total do item na NF) 
+             para correção caso o item seja fracionado.
+             * Veja o módulo tratamentoItem *. 
+             Aqui também temos uma regra de negócio sendo aplicada: alguns itens 
              específicos passam por uma conversão de unidade de medida no pedido. Para que o programa saiba lidar com esses itens, 
              eles foram mapeados e inseridos no código afim de aplicar a devida tratativa para cada caso.
     """

@@ -4,4 +4,4 @@ Automação do processo de lançamento de Danfes no sistema ERP Microsiga na rot
 
 As únicas diferenças entre os dois programas são algumas particularidades que estão bem pontuadas e descritas no código. De resto, é a mesmíssima coisa.
 
-A documentação de um vale pro outro.
+A documentação de um vale para o outro.

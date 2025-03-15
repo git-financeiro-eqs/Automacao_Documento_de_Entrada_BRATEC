@@ -9,9 +9,13 @@ import pyscreeze
 # Módulo fornecedor de funções utilitárias para os demais módulos do programa.
 
 
-FAILSAFE = True
+ptg.FAILSAFE = True
 
 def checar_failsafe():
+    """
+    Em determinado momento de desenvolvimento desse script, o método FAILSAFE importado diretamente da lib Pyautogui parou de funcionar.
+    Para contornar a situação, eu fiz essa função que força o robô a parar, exatamente como funciona no método ptg.FAILSAFE.
+    """
     z, f = ptg.position()
     if z == 0 and f == 0:
         raise ptg.FailSafeException

@@ -780,7 +780,7 @@ def robozinho(resetar=False):
                 utils.descer_copiar()
                 natureza_perc = paste() 
             maior_perc = max(lista_perc)
-            natureza_duplicata_clique = utils.encontrar_centro_imagem(r'Imagens\naturezaDuplicata.png')
+            natureza_duplicata_clique = utils.encontrar_centro_imagem(r'Imagens\ClicarNaturezaDuplicata.png')
             x, y = natureza_duplicata_clique
             ptg.click(x,y)
             ptg.press("up", interval=0.2)
